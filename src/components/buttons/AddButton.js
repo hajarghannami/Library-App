@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 
-const AddButton = () => {
+const AddButton = ({ type }) => {
   return (
-    <Link to="/members/new">
+    <Link to={type === "member" ? "/members/new" : "/books/new"}>
       <button type="button" class="btn btn-outline-primary">
-        Add Member
+        Add {type === "member" ? "Member" : "Book"}
       </button>
     </Link>
   );

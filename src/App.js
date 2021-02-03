@@ -7,14 +7,20 @@ import MemberProfile from "./components/MemberProfile";
 import BooksList from "./components/BooksList";
 import BookDetails from "./components/BookDetails";
 import MemberForm from "./components/MemberForm";
+import BookForm from "./components/BookForm";
 
 function App() {
   return (
     <div className="App">
       <Switch>
+        <Route path="/books/new">
+          <BookForm />
+        </Route>
+
         <Route path="/books/:bookSlug">
           <BookDetails />
         </Route>
+
         <Route path="/members/new">
           <MemberForm />
         </Route>

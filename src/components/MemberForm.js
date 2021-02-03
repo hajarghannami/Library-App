@@ -19,9 +19,7 @@ const MemberForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
     dispatch(addMember(member));
-
     history.push("/");
   };
 

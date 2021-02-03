@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import MemberItem from "./MemberItem";
 import AddButton from "./buttons/AddButton";
 
-const MembersList = (props) => {
+const MembersList = () => {
   const members = useSelector((state) => state.members);
   // console.log(members);
 
@@ -12,7 +12,7 @@ const MembersList = (props) => {
 
   return (
     <div>
-      <AddButton />
+      <AddButton type="member" />
       {membersList}
     </div>
   );
