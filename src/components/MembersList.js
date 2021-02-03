@@ -1,7 +1,8 @@
 import { useSelector } from "react-redux";
 import MemberItem from "./MemberItem";
+import AddButton from "./buttons/AddButton";
 
-const MembersList = () => {
+const MembersList = (props) => {
   const members = useSelector((state) => state.members);
   // console.log(members);
 
@@ -9,7 +10,12 @@ const MembersList = () => {
     <MemberItem key={member.id} member={member} />
   ));
 
-  return <div>{membersList}</div>;
+  return (
+    <div>
+      <AddButton />
+      {membersList}
+    </div>
+  );
 };
 
 export default MembersList;

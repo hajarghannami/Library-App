@@ -1,7 +1,11 @@
 import { useSelector } from "react-redux";
 import { Redirect, useParams } from "react-router";
+import MemberItem from "./MemberItem";
 
-const BookProfile = () => {
+const BookDetails = () => {
+  const members = useSelector((state) => state.members);
+  // console.log(members);
+
   const books = useSelector((state) => state.books);
   // console.log(books);
 
@@ -12,7 +16,17 @@ const BookProfile = () => {
   if (!book) return <Redirect to="/" />;
 
   const membersIds = [...new Set(book.borrowedBy)];
-  console.log(membersIds);
+  // console.log(membersIds);
+
+  const membersBorrowed = [];
+  membersIds.forEach((memberId) => {
+    membersBorrowed.push(members.find((member) => member.id === memberId));
+  });
+  // console.log(membersBorrowed);
+
+  const membersBorrowedList = membersBorrowed.map((memberBorrowed) => (
+    <MemberItem key={memberBorrowed.id} member={memberBorrowed} />
+  ));
 
   return (
     <div>
@@ -21,8 +35,11 @@ const BookProfile = () => {
       <p>{book.genre.length}</p>
       <p>{book.available}</p>
       <p>{book.borrowedBy.length}</p>
+      <br />
+      <h1>Members who borrowed: </h1>
+      <div>{membersBorrowedList}</div>
     </div>
   );
 };
 
-export default BookProfile;
+export default BookDetails;

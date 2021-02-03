@@ -6,6 +6,7 @@ import MembersList from "./components/MembersList";
 import MemberProfile from "./components/MemberProfile";
 import BooksList from "./components/BooksList";
 import BookDetails from "./components/BookDetails";
+import MemberForm from "./components/MemberForm";
 
 function App() {
   return (
@@ -14,9 +15,14 @@ function App() {
         <Route path="/books/:bookSlug">
           <BookDetails />
         </Route>
+        <Route path="/members/new">
+          <MemberForm />
+        </Route>
+
         <Route path="/members/:memberSlug">
           <MemberProfile />
         </Route>
+
         <Route path="/">
           <MembersList />
           <BooksList />
