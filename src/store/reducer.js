@@ -1,7 +1,7 @@
 import membersData from "../members";
 import booksData from "../books";
 import slugify from "react-slugify";
-import { ADD_MEMBER, ADD_BOOK } from "./actions";
+import { ADD_MEMBER, ADD_BOOK, BORROW_RETURN } from "./actions";
 
 const initialState = {
   members: membersData,
@@ -27,6 +27,19 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         books: [...state.books, newBook],
+      };
+
+    case BORROW_RETURN:
+      const updatedMember = action.payload.updatedMember;
+      const updatedBook = action.payload.updatedBook;
+      return {
+        ...state,
+        members: state.members.map((member) =>
+          member.id === updatedMember.id ? updatedMember : member
+        ),
+        books: state.books.map((book) =>
+          book.id === updatedBook.id ? updatedBook : book
+        ),
       };
 
     default:

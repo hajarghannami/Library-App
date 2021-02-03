@@ -1,8 +1,7 @@
 // ACTION TYPES
 export const ADD_MEMBER = "ADD_MEMBER";
 export const ADD_BOOK = "ADD_BOOK";
-export const UPDATE_MEMBER = "UPDATE_MEMBER";
-export const UPDATE_BOOK = "UPDATE_BOOK";
+export const BORROW_RETURN = "BORROW_RETURN";
 
 // Add Member Action
 export const addMember = (newMember) => {
@@ -20,18 +19,10 @@ export const addBook = (newBook) => {
   };
 };
 
-// Update Member Action
-export const updateMember = (updatedMember) => {
+// Borrow & Return Book Action
+export const borrowReturn = (updatedBook, updatedMember) => {
   return {
-    type: UPDATE_MEMBER,
-    payload: { updatedMember },
-  };
-};
-
-// Update Book Action
-export const updateBook = (updatedBook) => {
-  return {
-    type: UPDATE_BOOK,
-    payload: { updatedBook },
+    type: BORROW_RETURN,
+    payload: { updatedBook, updatedMember },
   };
 };
