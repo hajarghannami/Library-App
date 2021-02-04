@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useParams } from "react-router";
 import { borrowReturn } from "../store/actions";
 import MemberItem from "./MemberItem";
+import { BookNameDetail, BookInfo, BookName } from "../styles";
+import BackButton from "./buttons/BackButton";
 
 const BookDetails = () => {
   const dispatch = useDispatch();
@@ -80,13 +82,24 @@ const BookDetails = () => {
     >{`${member.firstName} ${member.lastName}`}</Dropdown.Item>
   ));
 
+  const handleAvailability = () => {
+    if (book.available === true) return "🟢";
+    else return "🔴";
+  };
+
   return (
     <div>
-      <h1>{book.title}</h1>
-      <h3>{book.author}</h3>
+      <BackButton path="/books" />
+      <br />
+      <br />
+      <BookNameDetail>{`${handleAvailability()} ${book.title}`}</BookNameDetail>
+      <br />
+      <BookName>{book.author}</BookName>
       <p>{book.genre.length}</p>
-      <p>{book.available}</p>
-      <p>{book.borrowedBy.length}</p>
+
+      <BookInfo>{`Book was Borrowed ${book.borrowedBy.length} times`}</BookInfo>
+      <br />
+      <br />
       <Dropdown>
         <Dropdown.Toggle disabled={!book.available} id="dropdown-basic">
           Borrow
@@ -94,7 +107,8 @@ const BookDetails = () => {
         <Dropdown.Menu>{membersList}</Dropdown.Menu>
       </Dropdown>
       <br />
-      <h1>Members who borrowed: </h1>
+      <br />
+      <BookInfo>Members who borrowed: </BookInfo>
       <div>{membersBorrowedList}</div>
     </div>
   );

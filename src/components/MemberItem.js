@@ -1,14 +1,20 @@
 import { Link } from "react-router-dom";
+import { TagWrapper, Emoji, MemberName, Info } from "../styles";
 
 const MemberItem = ({ member }) => {
+  const handleMembership = () => {
+    if (member.membership === "silver") return "🥈";
+    else if (member.membership === "gold") return "🥇";
+    else return "🥉";
+  };
   return (
-    <div>
-      <Link to={`/members/${member.slug}`}>
-        <h1>{`${member.firstName} ${member.lastName}`}</h1>
-      </Link>
-      <h3>{member.membership}</h3>
-      <p>{member.currentlyBorrowedBooks.length}</p>
-    </div>
+    <Link to={`/members/${member.slug}`}>
+      <TagWrapper>
+        <Emoji>{handleMembership()}</Emoji>
+        <MemberName>{`${member.firstName} ${member.lastName}`}</MemberName>
+        <Info>{`Books: ${member.currentlyBorrowedBooks.length}`}</Info>
+      </TagWrapper>
+    </Link>
   );
 };
 

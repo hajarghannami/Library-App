@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { addMember } from "../store/actions";
+import { Button, ButtonsWrapper } from "../styles";
+import BackButton from "./buttons/BackButton";
 
 const MemberForm = () => {
   const dispatch = useDispatch();
@@ -20,7 +22,7 @@ const MemberForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(addMember(member));
-    history.push("/");
+    history.push("/members");
   };
 
   return (
@@ -28,7 +30,7 @@ const MemberForm = () => {
       <h1>New Member Form</h1>
       <div className="input-group mb-3">
         <div className="input-group-prepend">
-          <span className="btn btn-outline-info ">First Name</span>
+          <span className="btn btn-outline-light ">First Name</span>
         </div>
         <input
           className="form-control"
@@ -40,7 +42,7 @@ const MemberForm = () => {
       </div>
       <div className="input-group mb-3">
         <div className="input-group-prepend">
-          <span className="btn btn-outline-info">Last Name</span>
+          <span className="btn btn-outline-light">Last Name</span>
         </div>
         <input
           className="form-control"
@@ -52,7 +54,7 @@ const MemberForm = () => {
       </div>
       <div className="input-group mb-3">
         <div className="input-group-prepend">
-          <span className="btn btn-outline-info">Membership</span>
+          <span className="btn btn-outline-light">Membership</span>
         </div>
         <input
           className="form-control"
@@ -63,9 +65,10 @@ const MemberForm = () => {
         />
       </div>
 
-      <button type="submit" className="btn btn-info float-right">
-        Add Member
-      </button>
+      <ButtonsWrapper>
+        <Button type="submit">Add Member</Button>
+        <BackButton path="/members" />
+      </ButtonsWrapper>
     </form>
   );
 };

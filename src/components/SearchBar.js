@@ -1,6 +1,8 @@
+import { SearchBarStyled } from "../styles";
+
 const SearchBar = ({ setQuery }) => {
   return (
-    <input
+    <SearchBarStyled
       type="text"
       placeholder="Search for a Book"
       onChange={(event) => setQuery(event.target.value)}

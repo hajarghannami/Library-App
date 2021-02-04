@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
+import { ButtonsWrapper, Button } from "../../styles";
 
 const AddButton = ({ type }) => {
   return (
     <Link to={type === "member" ? "/members/new" : "/books/new"}>
-      <button type="button" class="btn btn-outline-primary">
-        Add {type === "member" ? "Member" : "Book"}
-      </button>
+      <Button>Add {type === "member" ? "Member" : "Book"}</Button>
     </Link>
   );
 };

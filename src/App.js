@@ -8,10 +8,12 @@ import BooksList from "./components/BooksList";
 import BookDetails from "./components/BookDetails";
 import MemberForm from "./components/MemberForm";
 import BookForm from "./components/BookForm";
+import Home from "./components/Home";
+import { AppWrapper } from "./styles";
 
 function App() {
   return (
-    <div className="App">
+    <AppWrapper>
       <Switch>
         <Route path="/books/new">
           <BookForm />
@@ -19,6 +21,10 @@ function App() {
 
         <Route path="/books/:bookSlug">
           <BookDetails />
+        </Route>
+
+        <Route path="/books">
+          <BooksList />
         </Route>
 
         <Route path="/members/new">
@@ -29,12 +35,15 @@ function App() {
           <MemberProfile />
         </Route>
 
-        <Route path="/">
+        <Route path="/members">
           <MembersList />
-          <BooksList />
+        </Route>
+
+        <Route path="/">
+          <Home />
         </Route>
       </Switch>
-    </div>
+    </AppWrapper>
   );
 }
 

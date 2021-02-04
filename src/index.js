@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { createGlobalStyle, ThemeProvider } from "styled-components";
 
 import { BrowserRouter } from "react-router-dom";
 
@@ -17,11 +18,33 @@ const store = createStore(
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
+const theme = {
+  black: "#282c34",
+};
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+      "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  a {
+    text-decoration: none !important; 
+  }
+`;
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <App />
+        <GlobalStyle />
+        <ThemeProvider theme={theme}>
+          <App />
+        </ThemeProvider>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>,

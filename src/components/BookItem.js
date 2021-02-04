@@ -1,17 +1,19 @@
 import { Link } from "react-router-dom";
+import { Emoji, BookName, BookInfo, TagWrapper } from "../styles";
 
 const BookItem = ({ book }) => {
+  const handleAvailability = () => {
+    if (book.available === true) return "🟢";
+    else return "🔴";
+  };
+
   return (
-    <div>
+    <TagWrapper>
+      <Emoji>{handleAvailability()}</Emoji>
       <Link to={`/books/${book.slug}`}>
-        <h1>{book.title}</h1>
+        <BookName>{book.title}</BookName>
       </Link>
-      <h3>{book.author}</h3>
-      <p>{book.genre.length}</p>
-      <p>{book.available}</p>
-      <p>{book.available}</p>
-      <p>{book.borrowedBy.length}</p>
-    </div>
+    </TagWrapper>
   );
 };
 

@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { addBook } from "../store/actions";
+import { Button, ButtonsWrapper } from "../styles";
+import BackButton from "./buttons/BackButton";
 
 const BookForm = () => {
   const dispatch = useDispatch();
@@ -21,7 +23,7 @@ const BookForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(addBook(book));
-    history.push("/");
+    history.push("/books");
   };
 
   return (
@@ -29,7 +31,7 @@ const BookForm = () => {
       <h1>New Book Form</h1>
       <div className="input-group mb-3">
         <div className="input-group-prepend">
-          <span className="btn btn-outline-info ">Book Title</span>
+          <span className="btn btn-outline-light ">Book Title</span>
         </div>
         <input
           className="form-control"
@@ -41,7 +43,7 @@ const BookForm = () => {
       </div>
       <div className="input-group mb-3">
         <div className="input-group-prepend">
-          <span className="btn btn-outline-info">Book Author</span>
+          <span className="btn btn-outline-light">Book Author</span>
         </div>
         <input
           className="form-control"
@@ -51,9 +53,10 @@ const BookForm = () => {
           onChange={handleChange}
         />
       </div>
-      <button type="submit" className="btn btn-info float-right">
-        Add Book
-      </button>
+      <ButtonsWrapper>
+        <Button type="submit">Add Book</Button>
+        <BackButton path="/books" />
+      </ButtonsWrapper>
     </form>
   );
 };

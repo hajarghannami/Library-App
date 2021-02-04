@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { ButtonsWrapper } from "../styles";
 import BookItem from "./BookItem";
 import AddButton from "./buttons/AddButton";
+import BackButton from "./buttons/BackButton";
 import SearchBar from "./SearchBar";
 
 const BooksList = () => {
@@ -21,8 +23,13 @@ const BooksList = () => {
   return (
     <div>
       <SearchBar setQuery={setQuery} />
+
+      <ButtonsWrapper>
+        <AddButton type="book" />
+        <BackButton path="/" />
+      </ButtonsWrapper>
+
       {booksList}
-      <AddButton type="book" />
     </div>
   );
 };

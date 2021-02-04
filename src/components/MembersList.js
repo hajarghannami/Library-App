@@ -1,6 +1,8 @@
 import { useSelector } from "react-redux";
 import MemberItem from "./MemberItem";
 import AddButton from "./buttons/AddButton";
+import BackButton from "./buttons/BackButton";
+import { ButtonsWrapper } from "../styles";
 
 const MembersList = () => {
   const members = useSelector((state) => state.members);
@@ -12,7 +14,11 @@ const MembersList = () => {
 
   return (
     <div>
-      <AddButton type="member" />
+      <ButtonsWrapper>
+        <AddButton type="member" />
+        <BackButton path="/" />
+      </ButtonsWrapper>
+
       {membersList}
     </div>
   );
