@@ -15,11 +15,6 @@ const ReturnButton = ({ member, book }) => {
         (bookId) => bookId !== updatedBook.id
       ),
     };
-    console.log(
-      member.currentlyBorrowedBooks.filter(
-        (bookId) => bookId !== updatedBook.id
-      )
-    );
     dispatch(borrowReturn(updatedBook, updatedMember));
   };
 

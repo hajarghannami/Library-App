@@ -28,7 +28,7 @@ const BookDetails = () => {
   membersIds.forEach((memberId) => {
     membersBorrowed.push(members.find((member) => member.id === memberId));
   });
-  // console.log(membersBorrowed);
+  // console.log(membersBorrowed); >> better to replace forEach & push with map.
 
   const membersBorrowedList = membersBorrowed.map((memberBorrowed) => (
     <MemberItem key={memberBorrowed.id} member={memberBorrowed} />
